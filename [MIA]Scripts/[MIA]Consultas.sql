@@ -198,7 +198,7 @@ DELIMITER $$
         SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 		SELECT  Pedidos.idDetalleOrdenes, Pedidos.dateCreation, Pedidos._name, Pedidos.phone, Pedidos.cantidad, Pedidos.Total
 		FROM 
-		(SELECT Proveedor._name, idDetalleOrdenes, Proveedor.dateCreation, Proveedor.phone, Company._nameC, COUNT(Proveedor.dateCreation) as TiempoTotal, SUM(Ordenes.cantidad_, ROUND(SUM(Ordenes.cantidad*precio),2) as Total
+		(SELECT Proveedor._name, idDetalleOrdenes, Proveedor.dateCreation, Proveedor.phone, Company._nameC, COUNT(Proveedor.dateCreation) as TiempoTotal, Ordenes.cantidad, ROUND(SUM(Ordenes.cantidad*precio),2) as Total
 		FROM DetalleOrdenes 
 		INNER JOIN Ordenes ON DetalleOrdenes.idOrdenes = Ordenes.idOrdenes
 		INNER JOIN Proveedor ON DetalleOrdenes.idProveedor = Proveedor.idProveedor
